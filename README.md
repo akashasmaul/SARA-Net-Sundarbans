@@ -1,14 +1,11 @@
-# SARA-Net — Multimodal SAR and Climate Data Fusion for Flood Risk Assessment in the Sundarbans
-
+SARA-Net: Multimodal SAR and Climate Data Fusion for Flood Risk Assessment in the Sundarbans
 <p align="center">
-  <img src="figures/discovery.png" alt="SARA-Net discovery analysis" width="100%">
+  <img src="figures/sara-net-overview.png" alt="SARA-Net project overview" width="100%">
 </p>
-
 <p align="center">
   <b>Sundarbans Adaptive Risk Assessment Network</b><br>
-  A multimodal deep learning framework combining Sentinel-1 SAR imagery with climate context for flood-risk assessment.
+  A multimodal deep learning project that combines Sentinel-1 SAR imagery with climate information for flood-risk assessment.
 </p>
-
 <p align="center">
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white" alt="Python"></a>
   <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-Deep%20Learning-ee4c2c?logo=pytorch&logoColor=white" alt="PyTorch"></a>
@@ -17,394 +14,277 @@
   <img src="https://img.shields.io/badge/XAI-LayerCAM-8b5cf6" alt="LayerCAM">
   <img src="https://img.shields.io/badge/Study%20Area-Sundarbans-0f766e" alt="Sundarbans">
 </p>
-
 ---
-
-## Introduction
-
-The **Sundarbans**, shared by Bangladesh and India, is the world's largest mangrove forest and an important natural shield for coastal communities against cyclones, storm surges, and flooding. The region is exposed to increasing environmental pressure associated with climate change, sea-level rise, irregular precipitation, salinity changes, and hydrological stress.
-
-Flood monitoring in this environment is challenging. Optical satellite observations can become unavailable during periods of persistent cloud cover, while rainfall-only or single-factor approaches cannot capture the full spatial and environmental context of flooding.
-
-**SARA-Net (Sundarbans Adaptive Risk Assessment Network)** was developed as a multimodal deep learning framework that combines:
-
-- **Sentinel-1 Synthetic Aperture Radar (SAR)** imagery for spatial and structural information
-- **Rainfall and river-water-level data** for environmental context
-- **Multimodal feature fusion** for flood-risk prediction
-- **LayerCAM** for visual explanation of model predictions
-
-The study covers **2014–2025** and focuses on **Satkhira, Khulna, and Bagerhat**.
-
+About the Project
+The Sundarbans is one of the most important coastal ecosystems in Bangladesh and India. It helps protect nearby communities from cyclones, storm surges, and flooding. At the same time, the region is exposed to environmental changes such as irregular rainfall, sea-level rise, salinity, and changes in river and tidal conditions.
+Monitoring flood-related conditions in the Sundarbans is difficult. Optical satellite images can be affected by cloud cover, especially during the monsoon season. Rainfall data alone also cannot show where changes are happening on the ground.
+SARA-Net (Sundarbans Adaptive Risk Assessment Network) is an academic project that explores a multimodal approach to this problem. It combines:
+Sentinel-1 SAR imagery for spatial and structural information
+Rainfall and river-water-level data for environmental context
+Deep feature fusion to combine both data types
+LayerCAM to visualize the image regions that influence predictions
+The project covers the period 2014 to 2025 and focuses on Satkhira, Khulna, and Bagerhat.
 ---
-
-## Research Gap
-
-The project addresses several limitations identified in existing Sundarbans and Bangladesh flood-monitoring research:
-
-1. **Optical imagery limitations**  
-   Optical satellite imagery is strongly affected by cloud cover, particularly during monsoon conditions. SAR provides an all-weather sensing modality that can continue to provide observations under cloudy conditions.
-
-2. **Single-modality analysis**  
-   Image-only methods capture visual terrain and water-related structures but lack historical environmental context. Climate-only approaches provide numerical context but cannot directly observe spatial conditions.
-
-3. **Limited multimodal integration**  
-   The study identifies a lack of a consistent deep learning framework that jointly integrates SAR imagery with climate records for flood-risk assessment in the Sundarbans.
-
-4. **Explainability limitations**  
-   Flood-risk models may produce predictions without showing which physical regions contributed to those predictions. SARA-Net therefore incorporates LayerCAM to visualize spatial evidence.
-
-5. **Complex hydrological behaviour**  
-   Flood risk does not necessarily follow rainfall intensity alone. The study investigates **hydrological decoupling**, including high predicted risk under comparatively lower rainfall conditions.
-
+Why This Project?
+The project was motivated by a few practical gaps in flood-risk analysis:
+1. Optical imagery can be limited by cloud cover
+Clouds can make optical satellite observations difficult to use during important weather events. SAR can capture useful information even when cloud cover is present.
+2. One data source is not enough
+SAR images provide spatial information, but they do not directly contain historical rainfall or river-level context. Climate data provides environmental context, but it does not describe spatial patterns in the same way an image does.
+3. Combining the two can provide more context
+SARA-Net uses two separate input streams and combines their learned features before making a prediction.
+4. Model explanations matter
+A prediction is easier to inspect when we can see which parts of an image contributed to it. LayerCAM is used to create visual explanations of the model's image-based decisions.
+5. Flood risk is not always directly related to rainfall
+The project also looks at cases where predicted risk and rainfall do not move together. This is referred to as hydrological decoupling in the project analysis.
 ---
-
-## Objectives
-
-The project was designed around four main objectives:
-
-- Develop **SARA-Net**, a dual-stream model that fuses Sentinel-1 SAR imagery with climate information.
-- Construct a multimodal dataset covering **2014–2025** for Satkhira, Khulna, and Bagerhat.
-- Analyze long-term flood-risk patterns and identify regional vulnerability and possible hydrological decoupling.
-- Apply **LayerCAM** to visualize the spatial features influencing flood-risk predictions.
-
+Project Objectives
+The main objectives were to:
+Develop a dual-stream model that combines SAR imagery and climate information.
+Build a multimodal dataset covering 2014 to 2025 for Satkhira, Khulna, and Bagerhat.
+Explore long-term flood-risk patterns and regional differences.
+Investigate possible hydrological decoupling.
+Use LayerCAM to understand which spatial features affect model predictions.
 ---
-
-## Key Contributions
-
-The study presents four principal contributions:
-
-1. **SARA-Net multimodal architecture** combining SAR imagery and climate data.
-2. **All-weather monitoring formulation** based on Sentinel-1 SAR, addressing the limitations of cloud-dependent optical observations.
-3. **Hydrological decoupling analysis** to investigate flood-risk patterns that are not explained by rainfall intensity alone.
-4. **LayerCAM-based explainability** for identifying spatial regions associated with model predictions.
-
+Main Contributions
+The project brings together four main ideas:
+SARA-Net multimodal architecture  
+A model that combines visual SAR features with climate context.
+All-weather remote sensing  
+Sentinel-1 SAR is used as the main visual input, reducing dependence on cloud-sensitive optical imagery.
+Hydrological decoupling analysis  
+The project examines situations where predicted flood risk does not simply follow rainfall intensity.
+LayerCAM explainability  
+Visual heatmaps are used to inspect the spatial regions associated with model predictions.
 ---
-
-## Methodology
-
-The complete SARA-Net pipeline follows four major stages:
-
+Methodology
+The overall workflow is shown below.
 <p align="center">
   <img src="figures/system-workflow.png" alt="SARA-Net system workflow" width="72%">
 </p>
-
-### 1. Data Acquisition
-
-Two primary data sources are combined:
-
-- **Sentinel-1 SAR imagery** from the *SAR image of Sunderbans* dataset
-- **Climate records** from the *Bangladesh Climate Change Simulation Dataset*
-
-The climate context includes:
-
-- Annual rainfall (mm)
-- River water level (m)
-
-The SAR dataset provides three processing levels:
-
-- **Enhanced Visualization** — RGB composites for qualitative analysis of major events
-- **SAR Urban** — useful for infrastructure, embankments, and human encroachment
-- **VH Polarization** — sensitive to vegetation structure and useful for mangrove monitoring
-
-### 2. Automated Preprocessing
-
-The visual and climate streams are synchronized before model training.
-
+1. Data Acquisition
+Two main data sources are used:
+SAR image of Sunderbans: A decade of Sentinel-1 SAR observations over the Sundarbans
+Bangladesh Climate Change Simulation Dataset
+The climate information includes:
+Annual rainfall in millimeters
+River water level in meters
+The SAR dataset contains three processing levels:
+Enhanced Visualization: RGB-style composites for visual analysis
+SAR Urban: useful for infrastructure, embankments, and human settlement areas
+VH Polarization: useful for vegetation and mangrove-related structures
+2. Automated Preprocessing
+The SAR and climate data are synchronized before model training.
 The preprocessing pipeline includes:
-
-1. **OCR year extraction**  
-   EasyOCR extracts year/timestamp information from SAR image frames.
-
-2. **Ecological zone extraction**  
-   Each image is divided into:
-   - **North Zone:** approximately the upper 55%, representing human settlement areas
-   - **South Zone:** approximately the remaining 45%, representing the mangrove forest shield
-
-3. **District segmentation**  
-   The image width is proportionally divided into:
-   - Satkhira: 0–40%
-   - Khulna: 40–70%
-   - Bagerhat: 70–100%
-
-4. **Multimodal synchronization**  
-   Each processed SAR sample is matched with its corresponding rainfall, river-level, year, district, and sensor-mode context.
-
-5. **Risk labeling**  
-   Samples are classified as:
-   - **High Risk (1):** flood-impact score above the dataset median
-   - **Safe (0):** flood-impact score at or below the median
-
+Year extraction  
+EasyOCR is used to extract year or timestamp information from SAR image frames.
+Ecological zone extraction  
+Each image is divided into two broad areas:
+North Zone: approximately the upper 55%, representing human settlement areas
+South Zone: approximately the lower 45%, representing the mangrove forest area
+District segmentation  
+The image width is divided proportionally into:
+Satkhira: 0 to 40%
+Khulna: 40 to 70%
+Bagerhat: 70 to 100%
+Multimodal synchronization  
+Each SAR sample is matched with its corresponding rainfall, river level, year, district, and sensor mode.
+Risk labeling  
+Samples are divided into:
+High Risk (1): flood-impact score above the dataset median
+Safe (0): flood-impact score at or below the median
 <p align="center">
   <img src="figures/preprocessed-data.png" alt="Preprocessed SAR samples" width="55%">
 </p>
-
-### 3. Data Augmentation
-
-Training augmentation includes random spatial transformations and climate-feature noise injection. The final paper specifies random horizontal flips and affine translations for images, while 10% of climate features may be replaced with Gaussian noise during training. Validation and test data use only resizing and normalization.
-
-### 4. Multimodal Learning
-
-The processed inputs are passed through two parallel feature streams:
-
+3. Data Augmentation
+Training data uses random spatial transformations, including horizontal flips and affine translations.
+During training, 10% of climate features may also be replaced with Gaussian noise with a standard deviation of 0.05.
+Validation and test samples use resizing and normalization only.
+4. Multimodal Learning
+SARA-Net processes the two data types through separate streams.
 ```text
-                 SARA-Net
-                    │
-        ┌───────────┴───────────┐
-        │                       │
-   Visual Stream           Context Stream
-   Pretrained              MLP
-   ResNet-18
-        │                       │
-    512-dim                 32-dim
-        │                       │
-        └───────────┬───────────┘
-                    │
-             Concatenation
-                 544-dim
-                    │
-             Dense 128 + ReLU
-             + Dropout (0.3)
-                    │
-                Dense 64
-                  + ReLU
-                    │
-              Sigmoid Output
-                    │
-             Risk Probability
+                    SARA-Net
+                       |
+             +---------+---------+
+             |                   |
+        Visual Stream       Context Stream
+        ResNet-18                MLP
+             |                   |
+         512 features        32 features
+             |                   |
+             +---------+---------+
+                       |
+                  Concatenation
+                    544 features
+                       |
+                 Dense 128 + ReLU
+                  Dropout 0.3
+                       |
+                   Dense 64
+                    + ReLU
+                       |
+                  Sigmoid Output
+                       |
+                 Risk Probability
 ```
-
 <p align="center">
   <img src="figures/sara-net-architecture.png" alt="SARA-Net architecture" width="100%">
 </p>
-
 <p align="center">
   <img src="figures/sara-net-architecture-vertical.png" alt="Detailed SARA-Net architecture" width="48%">
 </p>
-
 ---
-
-## Model Architecture
-
-### Visual Stream — ResNet-18
-
-A pretrained **ResNet-18** backbone processes 224×224 SAR images. Its final classification layer is replaced by an identity mapping to obtain a **512-dimensional visual representation**, followed by dropout with \(p=0.5\).
-
-The visual branch is intended to capture spatial patterns such as:
-
-- Water structures
-- Riverbanks
-- Land boundaries
-- Settlement edges
-- Embankments
-- Mangrove and tidal-channel structures
-
-### Context Stream — MLP
-
-The context branch receives a **5-dimensional environmental vector** containing normalized rainfall, normalized river level, and a one-hot sensor-mode representation.
-
-The MLP follows:
-
+Model Architecture
+Visual Stream: ResNet-18
+A pretrained ResNet-18 model processes the SAR images after they are resized to 224 × 224.
+The original classification layer is replaced with an identity layer so that the network produces a 512-dimensional visual feature vector. Dropout with `p = 0.5` is then applied.
+The visual stream is intended to capture structures such as:
+Water and river patterns
+Riverbanks
+Land boundaries
+Settlement edges
+Embankments
+Mangrove areas
+Tidal channels
+Context Stream: MLP
+The context stream receives a 5-dimensional environmental vector containing normalized rainfall, normalized river level, and a one-hot representation of the sensor mode.
+The MLP structure is:
 ```text
 5 → 64 → 32
 ```
-
-with Batch Normalization and ReLU activation.
-
-### Fusion and Classification
-
-The 512-dimensional visual representation and 32-dimensional context representation are concatenated:
-
+Batch normalization and ReLU activation are used in this branch.
+Fusion and Classification
+The 512-dimensional visual representation and the 32-dimensional context representation are combined:
 ```text
-512 + 32 = 544 dimensions
+512 + 32 = 544 features
 ```
-
-The fusion head then follows:
-
+The fusion head follows:
 ```text
 544 → 128 → 64 → 1
 ```
-
-with ReLU activations and dropout in the fusion head. The final sigmoid output represents a continuous risk probability between **0 (Safe)** and **1 (High Risk)**.
-
-The reported analysis indicates **SAR-dominant fusion behaviour**, with climate variables providing supporting contextual information.
-
+ReLU activations and dropout are used in the fusion layers. The final sigmoid output gives a value between 0 and 1, representing the model's predicted risk probability.
+The project analysis suggests that the SAR features provide most of the predictive signal, while the climate features add supporting context.
 ---
-
-## Dataset Description
-
-The final study constructs a multimodal dataset containing **4,650 samples across 36 district-year groups**.
-
-| Component | Description |
-|---|---|
-| Visual modality | Sentinel-1 SAR imagery |
-| Climate modality | Rainfall + river-water level |
-| Study period | 2014–2025 |
-| Districts | Satkhira, Khulna, Bagerhat |
-| SAR processing levels | Enhanced Visualization, SAR Urban, VH Polarization |
-| Image input | 224 × 224 |
-| Context vector | 5 features |
-| Dataset groups | 36 district-year groups |
-| Target | Synthetic mechanism-informed flood-impact target |
-
-### Important Dataset Note
-
-The benchmark uses a **synthetic, mechanism-informed flood-impact target**. The target is useful for evaluating the proposed modelling framework, but **it must not be interpreted as measured real-world flood impact**.
-
-This distinction is important when reproducing or extending the experiments.
-
+Dataset
+The multimodal dataset contains 4,650 samples across 36 district-year groups.
+Component	Description
+Visual modality	Sentinel-1 SAR imagery
+Climate modality	Rainfall and river water level
+Study period	2014 to 2025
+Districts	Satkhira, Khulna, Bagerhat
+SAR processing levels	Enhanced Visualization, SAR Urban, VH Polarization
+Image input	224 × 224
+Context vector	5 features
+Dataset groups	36 district-year groups
+Target	Synthetic, mechanism-informed flood-impact target
+Important Note About the Target
+The benchmark uses a synthetic, mechanism-informed flood-impact target.
+This target was created for evaluating the modelling approach. It is not measured real-world flood-impact ground truth. Therefore, the reported metrics should be understood as results on this constructed benchmark rather than direct evidence of real-world flood prediction accuracy.
 ---
-
-## Experimental Setup
-
-The final paper reports:
-
-- Framework: **PyTorch**
-- Training environment: **NVIDIA T4 GPU via Google Colab**
-- Train/validation/test split: **group-disjoint**
-- Groups: **24 training + 6 validation + 6 test**
-- Training epochs: **10**
-- Batch size: **32**
-- Loss: **Binary Cross-Entropy (BCE)**
-- Optimizer: **Adam**
-- Learning rate: **5 × 10⁻⁵**
-- Weight decay: **1 × 10⁻⁴**
-- Scheduler: **ReduceLROnPlateau**
-- Additional evaluation: **Nested grouped cross-validation**
-
-Group-disjoint splitting prevents samples belonging to the same district-year group from appearing across evaluation partitions.
-
+Experimental Setup
+The main experimental configuration used in the project was:
+Setting	Value
+Framework	PyTorch
+GPU	NVIDIA T4
+Environment	Google Colab
+Data split	Group-disjoint
+Training groups	24
+Validation groups	6
+Test groups	6
+Epochs	10
+Batch size	32
+Loss	Binary Cross-Entropy
+Optimizer	Adam
+Learning rate	5 × 10⁻⁵
+Weight decay	1 × 10⁻⁴
+Scheduler	ReduceLROnPlateau
+Additional evaluation	Nested grouped cross-validation
+The group-disjoint split keeps samples from the same district-year group within the same partition. This helps reduce leakage between training and evaluation data.
 ---
-
-## Results
-
-### Fixed Group-Disjoint Test Set
-
-SARA-Net achieves:
-
-| Model | Modality | Accuracy | Precision | Recall | F1 |
-|---|---|---:|---:|---:|---:|
-| Climate-Only (MLP) | Climate | 48.08% | 0.45 | 0.35 | 0.39 |
-| Visual-Only (ResNet-18) | SAR Images | 76.34% | 0.71 | 0.88 | 0.78 |
-| **SARA-Net** | **Fusion** | **76.98%** | **0.68** | **0.97** | **0.80** |
-
-**SARA-Net ROC-AUC: 0.771**
-
-### Backbone Comparison
-
-| Backbone | Accuracy | AUC |
-|---|---:|---:|
-| ResNet-18 | 76.98% | 0.771 |
-| ResNet-50 | 78.26% | 0.786 |
-| DenseNet-121 | 76.21% | 0.770 |
-| EfficientNet-B0 | 71.99% | 0.778 |
-
-The ResNet-50 experiment achieved the highest reported accuracy and AUC among the tested backbones, while ResNet-18 provided a lighter alternative with competitive performance.
-
-### Nested Grouped Cross-Validation
-
-SARA-Net achieved:
-
-- **Accuracy:** 74.80 ± 12.31%
-- **AUC:** 0.688 ± 0.211
-
-The variability across grouped folds highlights the importance of evaluating generalization across district-year groups rather than relying only on random sample-level splitting.
-
+Results
+Fixed Group-Disjoint Test Set
+The main test results were:
+Model	Modality	Accuracy	Precision	Recall	F1
+Climate-Only (MLP)	Climate	48.08%	0.45	0.35	0.39
+Visual-Only (ResNet-18)	SAR Images	76.34%	0.71	0.88	0.78
+SARA-Net	Fusion	76.98%	0.68	0.97	0.80
+SARA-Net ROC-AUC: 0.771
+These results show how the multimodal model performed compared with the individual climate-only and visual-only branches on the fixed group-disjoint test set.
+Backbone Comparison
+Different image backbones were also tested:
+Backbone	Accuracy	AUC
+ResNet-18	76.98%	0.771
+ResNet-50	78.26%	0.786
+DenseNet-121	76.21%	0.770
+EfficientNet-B0	71.99%	0.778
+The ResNet-50 experiment produced the highest reported accuracy and AUC among the tested backbones. ResNet-18 was used for the main SARA-Net configuration as a lighter backbone.
+Nested Grouped Cross-Validation
+The grouped cross-validation results were:
+Accuracy: 74.80 ± 12.31%
+AUC: 0.688 ± 0.211
+The variation across groups shows why group-aware evaluation is important for this type of dataset.
 ---
-
-## Hydrological Decoupling
-
-The study investigates the relationship between annual rainfall and predicted flood risk across 2014–2025.
-
-A key observation is that predicted risk does not always increase with rainfall intensity. For example, the paper reports a relatively low predicted risk during the **2018** high-rainfall period despite rainfall reaching **4537 mm**, while a higher predicted risk appears in **2022** under comparatively lower rainfall.
-
-The 2022 pattern is described as a **possible silent-flood pattern**, not as a confirmed real-world flood event. The paper discusses drainage failure and embankment weakness as possible mechanisms that could contribute to such behaviour.
-
+Hydrological Decoupling
+The project also examines the relationship between annual rainfall and predicted flood risk from 2014 to 2025.
+One interesting observation is that predicted risk does not always increase with rainfall.
+For example:
+2018: rainfall reached 4537 mm, but the reported predicted risk was comparatively low.
+2022: predicted risk was comparatively higher even though rainfall was lower.
+The project refers to the 2022 pattern as a possible silent-flood pattern. This is an interpretation of the model results, not confirmation of a measured flood event.
+The project discusses factors such as drainage failure and embankment weakness as possible explanations for this type of pattern.
 <p align="center">
-  <img src="figures/discovery.png" alt="SARA-Net discovery: rainfall and visual-risk decoupling" width="100%">
+  <img src="figures/discovery.png" alt="Rainfall and predicted risk analysis" width="100%">
 </p>
-
 ---
-
-## Ecosystem Shield Analysis
-
-The study introduces a **Hydrological Resilience Index (HRI)** to examine the flood-buffering capacity of the mangrove ecosystem.
-
-The reported analysis shows positive HRI values during 2014–2020, followed by a decline after 2020 and particularly around the 2022 event.
-
-This analysis is used to investigate changes in the ecosystem's buffering capacity alongside regional flood-risk patterns.
-
+Ecosystem Shield Analysis
+The project introduces a Hydrological Resilience Index (HRI) to explore the possible buffering role of the mangrove ecosystem.
+The analysis reports positive HRI values during 2014 to 2020, followed by a decline after 2020, particularly around 2022.
+This analysis is used to explore changes in ecosystem buffering capacity alongside the regional flood-risk patterns.
 <p align="center">
   <img src="figures/ecosystem-shield.png" alt="Ecosystem shield and hydrological resilience analysis" width="100%">
 </p>
-
 ---
-
-## Regional Vulnerability
-
+Regional Vulnerability
 The regional analysis reports the following risk scores:
-
-| Region | District | Risk Score |
-|---|---|---:|
-| Western | Satkhira | **0.88** |
-| Central | Khulna | 0.65 |
-| Eastern | Bagerhat | 0.42 |
-
-The paper identifies Satkhira as having the highest reported regional risk score in this analysis.
-
+Region	District	Risk Score
+Western	Satkhira	0.88
+Central	Khulna	0.65
+Eastern	Bagerhat	0.42
+These values represent the risk scores produced by the project analysis for the three study regions.
 <p align="center">
   <img src="figures/regional-vulnerability.png" alt="Regional vulnerability profile" width="75%">
 </p>
-
 ---
-
-## Explainable AI — LayerCAM
-
-SARA-Net incorporates **LayerCAM** to investigate which spatial regions contribute to the model's predictions.
-
-Forward and backward hooks are attached to the final convolutional layer of the ResNet-18 backbone. The captured activation maps and gradients are aggregated to produce spatial localization heatmaps.
-
-The reported visualizations show activation around features including:
-
-- Riverbanks
-- Embankments
-- Settlement boundaries
-- Tidal channels
-- Mangrove canopy structures
-
-The North/settlement zone shows strong activation around linear and boundary structures, while the South/forest zone emphasizes canopy and tidal-channel structures.
-
+Explainable AI with LayerCAM
+SARA-Net uses LayerCAM to inspect which spatial regions are associated with the model's image-based predictions.
+Hooks are attached to the final convolutional layer of the ResNet-18 backbone. The captured activations and gradients are then used to create spatial heatmaps.
+The visualizations highlight areas such as:
+Riverbanks
+Embankments
+Settlement boundaries
+Tidal channels
+Mangrove canopy structures
+The North or settlement zone shows activation around several linear and boundary structures. The South or forest zone shows activation around canopy and tidal-channel structures.
 <p align="center">
   <img src="figures/layercam-analysis.png" alt="LayerCAM visual explanations" width="90%">
 </p>
-
-The paper interprets these activations as evidence that the model is responding to meaningful environmental structures rather than only irrelevant image background.
-
+These visualizations help inspect whether the model is using meaningful environmental structures rather than relying only on unrelated image regions.
 ---
-
-## Research Outputs
-
-This repository contains multiple development notebooks together with the project's research paper, report, and final presentation.
-
-### Notebooks
-
-| Notebook | Description |
-|---|---|
-| [`SARA-Net-v3.ipynb`](notebooks/SARA-Net-v3.ipynb) | Earlier SARA-Net development implementation |
-| [`SARA-Net-v4.ipynb`](notebooks/SARA-Net-v4.ipynb) | Intermediate model development and evaluation |
-| [`SARA-Net-v7.ipynb`](notebooks/SARA-Net-v7.ipynb) | Later experimental/integrity revision |
-
-The notebooks are preserved as development artifacts. Reported paper metrics should be interpreted according to the experimental setup documented in the **latest paper**, rather than assumed to apply identically to every notebook version.
-
-### Reports & Presentation
-
-- [`SARA-Net-Paper.pdf`](reports/SARA-Net-Paper.pdf) — latest research paper
-- [`SARA-Net-Report.pdf`](reports/SARA-Net-Report.pdf) — project report
-- [`SARA-Net-Final-Presentation.pptx`](reports/SARA-Net-Final-Presentation.pptx) — final presentation
-
+Project Files
+This repository contains the main project materials, including model development notebooks, figures, project documents, and presentation files.
+Notebooks
+Notebook	Description
+`sara-net-v4(1).ipynb`	Intermediate SARA-Net development and evaluation
+`sara-net-v7-merged-integrity-novelty(1).ipynb`	Later experimental and integrity-focused revision
+`sundarban-v3.ipynb`	Earlier Sundarban project implementation
+The notebooks represent different stages of development. They may contain experiments or settings that differ from the main results presented in this README.
+Documents and Presentation
+`SARA-Net-Paper.pdf` contains the project's research paper.
+`Group_07_Project.pdf` contains the project report.
+`Sundarban_Project_Final.pptx` contains the final presentation.
+`Sundarban-Project draft.pptx` contains an earlier presentation draft.
 ---
-
-## Repository Structure
-
+Repository Structure
 ```text
 SARA-Net-Sundarbans/
 │
@@ -419,116 +299,79 @@ SARA-Net-Sundarbans/
 │   ├── results-dashboard.png
 │   ├── sara-net-architecture.png
 │   ├── sara-net-architecture-vertical.png
+│   ├── sara-net-overview.png
 │   └── system-workflow.png
 │
 ├── notebooks/
-│   ├── SARA-Net-v3.ipynb
-│   ├── SARA-Net-v4.ipynb
-│   └── SARA-Net-v7.ipynb
+│   ├── sara-net-v4(1).ipynb
+│   ├── sara-net-v7-merged-integrity-novelty(1).ipynb
+│   └── sundarban-v3.ipynb
 │
 └── reports/
-    ├── SARA-Net-Final-Presentation.pptx
+    ├── Group_07_Project.pdf
     ├── SARA-Net-Paper.pdf
-    └── SARA-Net-Report.pdf
+    ├── Sundarban_Project_Final.pptx
+    └── Sundarban-Project draft.pptx
 ```
-
 ---
-
-## Technologies
-
-- Python
-- PyTorch
-- TorchVision
-- ResNet-18
-- Multi-Layer Perceptron (MLP)
-- Sentinel-1 SAR
-- LayerCAM
-- EasyOCR
-- OpenCV
-- NumPy
-- Pandas
-- Scikit-learn
-- Google Colab / NVIDIA T4
-
+Technologies and Tools
+Python
+PyTorch
+TorchVision
+ResNet-18
+Multi-Layer Perceptron (MLP)
+Sentinel-1 SAR
+LayerCAM
+EasyOCR
+OpenCV
+NumPy
+Pandas
+Scikit-learn
+Google Colab
+NVIDIA T4 GPU
 ---
-
-## Data Sources
-
-The study uses the following datasets cited by the paper:
-
-- **SAR image of Sunderbans: A decade of Sentinel-1 SAR observations over the Sundarbans**  
-  https://www.kaggle.com/datasets/sohambenji/sar-image-of-sunderbans
-
-- **Bangladesh Climate Change Simulation Dataset**  
-  https://www.kaggle.com/datasets/shohinurpervezshohan/bangladesh-climate-change-simulation-dataset
-
-The repository does **not** redistribute the source datasets.
-
+Data Sources
+The project uses the following public datasets:
+SAR Image of Sunderbans
+SAR image of Sunderbans: A decade of Sentinel-1 SAR observations over the Sundarbans
+https://www.kaggle.com/datasets/sohambenji/sar-image-of-sunderbans
+Bangladesh Climate Change Simulation Dataset
+Bangladesh Climate Change Simulation Dataset
+https://www.kaggle.com/datasets/shohinurpervezshohan/bangladesh-climate-change-simulation-dataset
+The original datasets are not redistributed in this repository.
 ---
-
-## Limitations and Responsible Interpretation
-
-SARA-Net is a research prototype for flood-risk assessment rather than an operational emergency-warning system.
-
-The most important limitation is that the benchmark target is **synthetic and mechanism-informed**, not measured flood-impact ground truth. Therefore, the reported metrics quantify performance on the constructed benchmark and should not be interpreted as direct evidence of real-world flood-prediction accuracy.
-
-The paper also reports substantial group-level variability in nested grouped cross-validation.
-
-Future work identified by the study includes:
-
-- Developing a lightweight version for edge deployment
-- Connecting the framework to live Sentinel-1 observations
-- Extending evaluation to other vulnerable coastal delta regions
-- Strengthening validation with measured flood-impact observations
-
+Limitations
+SARA-Net is an academic research project and a modelling prototype. It is not an operational flood-warning system.
+The most important limitation is the target definition. The benchmark uses a synthetic, mechanism-informed flood-impact target rather than measured flood-impact ground truth.
+Because of this, the reported accuracy and AUC should not be presented as direct real-world flood-prediction accuracy.
+The grouped cross-validation results also show noticeable variation between groups. More real-world validation is needed before applying the approach to operational flood monitoring.
+Possible Future Work
+The project can be extended in several directions:
+Develop a lighter model for edge deployment.
+Connect the framework to live Sentinel-1 observations.
+Evaluate the approach in other vulnerable coastal delta regions.
+Improve validation using measured flood-impact observations.
+Explore more detailed temporal and hydrological features.
 ---
-
-## Citation
-
-If you use this repository or build upon the SARA-Net framework, please cite:
-
-```bibtex
-@article{saranet2025,
-  title   = {SARA-Net: Multimodal SAR and Climate Data Fusion for Flood Risk Assessment in the Sundarbans},
-  author  = {Asmaul Hossain Akash and Dolon Akter Mim and Tazin Jannat Bushra and Tithi Karmakar},
-  year    = {2025}
-}
-```
-
-> **Note:** The repository's `reports/SARA-Net-Paper.pdf` contains the complete author list and final reference information.
-
+Acknowledgements
+This project was completed as part of the Computer Science Applications and Advancements course at the American International University-Bangladesh (AIUB).
+We would like to acknowledge the guidance and support of Dr. Muhammad Hasibur Rashid Chayon, Department of Computer Science, AIUB.
 ---
-
-## Acknowledgements
-
-This project was conducted as part of the **Computer Science Applications and Advancements** course at the **American International University-Bangladesh (AIUB)**.
-
-The project report acknowledges the guidance and support of **Dr. Muhammad Hasibur Rashid Chayon**, Department of Computer Science, AIUB.
-
----
-
-## Authors
-
-**Asmaul Hossain Akash**  
+Team
+Asmaul Hossain Akash  
 Department of Computer Science  
 American International University-Bangladesh (AIUB)
-
-**Dolon Akter Mim**  
+Dolon Akter Mim  
 Department of Computer Science  
 American International University-Bangladesh (AIUB)
-
-**Tazin Jannat Bushra**  
+Tazin Jannat Bushra  
 Department of Computer Science  
 American International University-Bangladesh (AIUB)
-
-**Tithi Karmakar**  
+Tithi Karmakar  
 Department of Computer Science  
 American International University-Bangladesh (AIUB)
-
-**Supervisor:** Dr. Muhammad Hasibur Rashid Chayon
-
+Supervisor: Dr. Muhammad Hasibur Rashid Chayon
 ---
-
 <p align="center">
-  <i>SARA-Net — Exploring multimodal AI for resilient coastal ecosystems.</i>
+  <i>SARA-Net: Exploring multimodal AI for resilient coastal ecosystems.</i>
 </p>
