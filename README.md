@@ -33,6 +33,12 @@ The project covers the period **2014 to 2025** and focuses on **Satkhira, Khulna
 
 ---
 
+## Overview of the Project
+
+<p align="center">
+  <img src="figures/sara-net-overview.png" alt="SARA-Net project overview" width="100%">
+</p>
+
 ## Why This Project?
 
 The project was motivated by a few practical gaps in flood-risk analysis:
