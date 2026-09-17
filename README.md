@@ -551,14 +551,6 @@ American International University-Bangladesh (AIUB)
 Department of Computer Science  
 American International University-Bangladesh (AIUB)
 
-**Tazin Jannat Bushra**  
-Department of Computer Science  
-American International University-Bangladesh (AIUB)
-
-**Tithi Karmakar**  
-Department of Computer Science  
-American International University-Bangladesh (AIUB)
-
 **Supervisor:** Dr. Muhammad Hasibur Rashid Chayon
 
 ---
