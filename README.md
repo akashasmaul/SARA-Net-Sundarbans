@@ -1,134 +1,28 @@
-\# SARA-Net
+# SARA-Net
 
+> Multimodal SAR and Climate Data Fusion for Flood Risk Assessment
+> in the Sundarbans
 
+<p align="center">
+  <img src="figures/discovery.png" width="900">
+</p>
 
-\[Hero image]
+...
 
+## Architecture
 
+<p align="center">
+  <img src="figures/sara-net-architecture.png" width="850">
+</p>
 
-Short project description
+...
 
+## Results
 
+| Model | Accuracy | AUC |
+|---|---:|---:|
+| Climate-Only | 48.08% | — |
+| Visual-Only | 76.34% | — |
+| SARA-Net | 76.98% | 0.771 |
 
-\[Badges]
-
-
-
-\## Overview
-
-
-
-\## Research Problem
-
-
-
-\## Key Contributions
-
-
-
-\## System Architecture
-
-
-
-\[architecture image]
-
-
-
-\## Workflow
-
-
-
-\[workflow image]
-
-
-
-\## Dataset \& Preprocessing
-
-
-
-\[preprocessed-data image]
-
-
-
-\## Model
-
-
-
-Visual Stream
-
-Context Stream
-
-Multimodal Fusion
-
-
-
-\## Experimental Results
-
-
-
-\[results-dashboard image]
-
-
-
-Metrics table
-
-
-
-\## Explainability
-
-
-
-\[layercam-analysis image]
-
-
-
-\## Sundarbans Ecosystem Analysis
-
-
-
-\[discovery image]
-
-\[ecosystem-shield image]
-
-\[regional-vulnerability image]
-
-
-
-\## Model Evolution
-
-
-
-v3
-
-v4
-
-v7
-
-
-
-\## Repository Structure
-
-
-
-\## Notebooks
-
-
-
-\## Reports \& Presentation
-
-
-
-\## Limitations
-
-
-
-\## Future Work
-
-
-
-\## Citation
-
-
-
-\## Authors
-
+...
