@@ -1,10 +1,6 @@
 # SARA-Net: Multimodal SAR and Climate Data Fusion for Flood Risk Assessment in the Sundarbans
 
 <p align="center">
-  <img src="figures/sara-net-overview.png" alt="SARA-Net project overview" width="100%">
-</p>
-
-<p align="center">
   <b>Sundarbans Adaptive Risk Assessment Network</b><br>
   A multimodal deep learning project that combines Sentinel-1 SAR imagery with climate information for flood-risk assessment.
 </p>
@@ -424,18 +420,17 @@ This repository contains the main project materials, including model development
 
 | Notebook | Description |
 |---|---|
-| `sara-net-v4(1).ipynb` | Intermediate SARA-Net development and evaluation |
-| `sara-net-v7-merged-integrity-novelty(1).ipynb` | Later experimental and integrity-focused revision |
-| `sundarban-v3.ipynb` | Earlier Sundarban project implementation |
+| `SARA-Net-v4.ipynb` | Intermediate SARA-Net development and evaluation |
+| `SARA-Net-v7.ipynb` | Later experimental and integrity-focused revision |
+| `SARA-Net-v3.ipynb` | Earlier Sundarban project implementation |
 
 The notebooks represent different stages of development. They may contain experiments or settings that differ from the main results presented in this README.
 
 ### Documents and Presentation
 
 - `SARA-Net-Paper.pdf` contains the project's research paper.
-- `Group_07_Project.pdf` contains the project report.
-- `Sundarban_Project_Final.pptx` contains the final presentation.
-- `Sundarban-Project draft.pptx` contains an earlier presentation draft.
+- `SARA-Net-Report.pdf` contains the project report.
+- `SARA-Net-Final-Presentation.pptx` contains the final presentation.
 
 ---
 
@@ -459,15 +454,14 @@ SARA-Net-Sundarbans/
 │   └── system-workflow.png
 │
 ├── notebooks/
-│   ├── sara-net-v4(1).ipynb
-│   ├── sara-net-v7-merged-integrity-novelty(1).ipynb
-│   └── sundarban-v3.ipynb
+│   ├── SARA-Net-v4.ipynb
+│   ├── SARA-Net-v7.ipynb
+│   └── SARA-Net-v3.ipynb
 │
 └── reports/
-    ├── Group_07_Project.pdf
+    ├── SARA-Net-Report.pdf
     ├── SARA-Net-Paper.pdf
-    ├── Sundarban_Project_Final.pptx
-    └── Sundarban-Project draft.pptx
+    ├── SARA-Net-Final-Presentation.pptx
 ```
 
 ---
